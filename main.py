@@ -66,47 +66,13 @@ def nova_janela():
         remotedir = str(remotedir2.get())
         list_recursive(sftp, remotedir, file)
 
-    def baixa_arquivos(sftp, remotedir, file, path):
-        for entry in sftp.listdir_attr(remotedir):
-            remotepath = remotedir + "/" + entry.filename
-            path = path + "/" + entry.filename
-            master1.update()
-            if sftp.isdir(remotepath):
-                baixa_arquivos(sftp, remotedir, file, path)
-            else:
-                if file in remotepath:
-                    sftp.get(remotepath, localpath = path, preserve_mtime=True)
-
-    def download():
-        file = str(file2.get())
-        remotedir = str(remotedir2.get())
-        path = dlg.askdirectory(parent=master1, initialdir="/", title='Selecione a pasta')
-        baixa_arquivos(sftp, remotedir, file, path)
-
-    def parar():
-        print('break')
-
     bt_pesquisar = Button(master1, text='Procurar', fg='white', bg='#665f6f', font=font, command=procurar)
     bt_pesquisar.place(width=100, height=53, x=665, y=10)
     input_txt = Text(master1, bg="#E6E6FA")
     input_txt.place(width=950, height=235, x=30, y=80)
     scrollbar = ttk.Scrollbar(master1, orient='vertical', command=input_txt.yview)
     scrollbar.place(height=235, x=975, y=80)
-
-    def exporta_txt():
-        file = open('lista_files.txt', 'w')
-        file.write(str(df))
-        file.close()
-
     input_txt['yscrollcommand'] = scrollbar.set
-    bt_parar = Button(master1, text='Parar Pesquisa', fg='white', bg='#665f6f', font=font, command=parar)
-    bt_parar.place(width=110, height=53, x=880, y=330)
-
-    bt_exportar = Button(master1, text='Exportar Lista', fg='white', bg='#665f6f', font=font, command=exporta_txt)
-    bt_exportar.place(width=110, height=53, x=30, y=330)
-
-    bt_download = Button(master1, text='Download Files', fg='white', bg='#665f6f', font=font, command=download)
-    bt_download.place(width=110, height=53, x=160, y=330)
 
 def enviar():
     global user, senha
