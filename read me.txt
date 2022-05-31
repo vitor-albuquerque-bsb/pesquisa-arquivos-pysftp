@@ -1,0 +1,16 @@
+##################################################################################
+#---------------------- Desenvolvido por Vítor Albuquerque ----------------------#
+##################################################################################
+
+Contato: https://www.linkedin.com/in/vitor-albuquerque-bsb/
+
+Busca Arquivos no SFTP versão 1.0
+
+Próximas funcionalidades:
+
+* Download dos arquivos retornados pela busca;
+* Download da listagem;
+* Input de lista de pesquisa e comparação dos diretórios em dias distintos;
+* Pause de pesquisa.
+
+Para uso do programa, insira seu host/port do servidor SFTP no código para autenticação.
